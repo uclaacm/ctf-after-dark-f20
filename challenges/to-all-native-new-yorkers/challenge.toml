@@ -1,0 +1,9 @@
+slug = "to-all-native-new-yorkers"
+title = "To All Native New Yorkers"
+author = "Aarin"
+value = 20
+description = """Cmon, [this door](the_door.txt) isn't gonna open itself!"""
+tags = [ "" ]
+files = ["the_door.txt"]
+flag = "flag{wendy_williams_based}"
+enabled = true

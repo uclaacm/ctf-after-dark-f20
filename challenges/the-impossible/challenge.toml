@@ -1,0 +1,9 @@
+slug = "the-impossible"
+title = "The Impossible"
+author = "Aarin"
+value = 10
+description = """They said it could never happen. They said that no one has ever seen it before....but is it true? [This file](ONES_GOTTA_BE_UGLY.zip) might hold the true answer."""
+tags = [ "file" ]
+files = [ "ONES_GOTTA_BE_UGLY.zip" ]
+flag = "flag{tw0_pr3tty_b3st_fr1ends}"
+enabled = true

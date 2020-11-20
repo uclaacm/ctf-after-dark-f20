@@ -1,0 +1,13 @@
+slug = "big-time-file-analysis"
+title = "Big Time File Analysis"
+author = "Aarin"
+value = 60
+description = """Go on a big time adventure with the best boy band Worldwide! Can you make it at least Halfway There on [this challenge](UH_OH_OHH_OHHHHHH.zip)? Well, hope you have what it takes, because it's gonna be a Big Night, and Music Sounds Better when you find a flag :)
+
+NOTE: this challenge requires you to find four different components that will make up your final answer. The ordering should be straightforward, but make sure you separate your answers with _ and you make everything lowercase. Also, please wrap your answer with flag{}. 
+
+Sample answer format: flag{answer1_answer2_answer3_answer4}"""
+tags = [ "file" ]
+files = [ "UH_OH_OHH_OHHHHHH.zip" ]
+flag = "flag{hockey_helmet_minnesota_boyfriend}"
+enabled = true

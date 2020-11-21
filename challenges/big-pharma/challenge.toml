@@ -1,0 +1,11 @@
+slug = "big-pharma"
+title = "Big Pharma"
+author = "Yufa"
+value = 40
+description = """There's some conspiracy going on, I just know it...can you figure out what the real intention of [this](top-secret.png) Big Pharma vaccination campaign is?
+
+Please enter the flag with underscores between each word (ie in the format flag{word1_word2_word3})."""
+tags = [ "file" ]
+files = [ "top-secret.png" ]
+flag = "flag{bill_gates_microchips}"
+enabled = true

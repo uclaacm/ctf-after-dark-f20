@@ -2,7 +2,7 @@ slug = "four-pigs-in-a-snowstorm"
 title = "Four Pigs In A Snowstorm"
 author = "Yufa"
 value = 30
-description = """I painted four pigs in a snowstorm! Looking for something? The pigs have all the answers.
+description = """I painted [four pigs in a snowstorm](snowstorm.png)! Looking for something? The pigs have all the answers.
 
 Enter the flag with underscores between each word (ie flag{word1_word2_word3_word4 etc.}). The ordering should be fairly obvious :)"""
 tags = [ "file" ]

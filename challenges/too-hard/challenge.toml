@@ -1,0 +1,14 @@
+slug = "too-hard"
+title = "TOO HARD!"
+author = "Henry"
+value = 30
+description = """You cracked too_easy and too_medium. You didn't give him a choice. This time, he decided to utilize his own secret
+                    encryption method. See if you can crack it! [file](too_hard.pcapng)
+ 
+Hint 1: Some of the bytes look rather unnecessary, maybe try grouping them?
+Hint 2: Take another look at the flag format"""
+
+tags = [ "packet" ]
+files = ["too_hard.pcapng"]
+flag = "flag{shark_t1me_b4by}"
+enabled = true

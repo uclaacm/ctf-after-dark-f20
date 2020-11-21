@@ -1,0 +1,9 @@
+slug = "bury-the-light"
+title = "Bury The Light"
+author = "Peter"
+value = 30
+description = """The Yamato has the power to cut the fabric of space itself, and I think you can actually hear in this [recording](virgil.wav)"""
+tags = [ "file" ]
+files = [ "virgil.wav" ]
+flag = "flag{fortune_sides_with_him_who_dares}"
+enabled = true

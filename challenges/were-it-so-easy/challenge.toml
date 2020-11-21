@@ -1,0 +1,9 @@
+slug = "were-it-so-easy"
+title = "Were It So Easy"
+author = "Peter"
+value = 40
+description = """Cortana, I think there is something wrong with my [audio](file). Can you figure out what's wrong? Be sure to wrap your answer with flag{...}"""
+tags = [ "file" ]
+files = [ "file" ]
+flag = "flag{captain_reyes_117}"
+enabled = true

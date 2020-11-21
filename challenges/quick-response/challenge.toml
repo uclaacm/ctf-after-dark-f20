@@ -1,0 +1,9 @@
+slug = "quick-response"
+title = "Quick Response"
+author = "Peter"
+value = 50
+description = """A little bit of magic might be required to open this [one]. Here is the encryption algorithm for your [reference].(encrypt.py)"""
+tags = [ "file" ]
+files = [ "encrypted.png", "encrypt.py"]
+flag = "flag{the_world_is_a_colorful_place}"
+enabled = true

@@ -1,0 +1,9 @@
+slug = "a-good-first-impression"
+title = "A Good First Impression"
+author = "Disha"
+value = 50
+description = """Did you know artists sometimes hide secret messages in their files? It's true! I know for a fact Monet loves to rant in [these here water lily paintings](MonetsGallery.zip). He's dead though, so he can't tell you how to find the messages. Maybe he commented his code?"""
+tags = [ "file" ]
+files = [ "MonetsGallery.zip" ]
+flag = "flag{pierreaugusterenoir}"
+enabled = true

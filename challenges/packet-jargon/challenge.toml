@@ -1,0 +1,9 @@
+slug = "packet-jargon"
+title = "Packet Jargon"
+author = "Peter"
+value = 30
+description = """These packets must contain useful [information](scramble.pcap). We tried reassembling them, but it is taking too long. Can you find a way to expedite the process?"""
+tags = [ "packet" ]
+files = ["scramble.pcap"]
+flag = "flag{base64_is_the_best!}"
+enabled = true

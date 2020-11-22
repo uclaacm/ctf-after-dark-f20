@@ -1,0 +1,9 @@
+slug = "feedback-ctf-afterdark"
+title = "CTF After Dark Feedback"
+author = "henry"
+value = 5
+description = """Hello, kind stranger! Get free points for giving us [feedback](https://docs.google.com/forms/d/15mlTstCWj8gNBBNyLoHS13c_WoGAYGx2wEo9YGEjVEU/) on our workshop!"""
+tags = [ "feedback" ]
+files = []
+flag = "flag{feedbacks_are_cool_AfterDark20}"
+enabled = true

@@ -1,6 +1,6 @@
 slug = "fat-bus"
 title = "FAT Bus"
-auther = "Matt"
+author = "Matt"
 value = 10
 description = """We have a packet capture of some [activity](bus.pcap) that occured on a bus - just not a network bus. See if you can discover the flag.
 

@@ -1,0 +1,11 @@
+slug = "virtual-lockpicking"
+title = "Virtual Lockpicking"
+author = "Jeffrey Ma"
+value = 40
+description = """This is the Lockpicking Lawyer and what I have for you today is the [TurboLock](locked_lock.png). We are going to open this lock with this [screwdriver](screwdriver.png) ... I got the right one, right?
+PS: The Python Imaging Library is a pretty handy tool
+"""
+tags = [ "file" ]
+files = [ "locked_lock.png" , "screwdriver.png"]
+flag = "flag{who0ps_wrong_screwdriver}"
+enabled = true

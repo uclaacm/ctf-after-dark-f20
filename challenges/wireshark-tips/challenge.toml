@@ -1,0 +1,10 @@
+slug = "wireshark-filters"
+title = "Wireshark Filters"
+author = "Jeffrey Ma"
+value = 20
+description = """Here's a chance to learn some more [Wireshark filter tricks](WiresharkTricks.pcapng)! What is the full authorization of the 9th http request that has their base64-encoded credentials starting with v? Both upper and lower case work.
+Please enter the flag with underscores replacing spaces"""
+tags = [ "packet" ]
+files = [ "WiresharkTricks.pcapng"]
+flag = "flag{Basic_Vo38sPICxUw19KebG4269d6wFJPgnf==}"
+enabled = true

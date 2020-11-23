@@ -1,0 +1,11 @@
+slug = "fat-bus"
+title = "FAT Bus"
+auther = "Matt"
+value = 10
+description = """We have a packet capture of some [activity](bus.pcap) that occured on a bus - just not a network bus. See if you can discover the flag.
+
+Note: the flag does not have an enclosing flag{}, but you'll know it when you see it. Make sure to include flag{} when submitting."""
+tags = [ "packet" ]
+files = [ "bus.pcap" ]
+flag = "flag{M4ss_st0r4g3_0v3r_th3_w1resh4rk}"
+enabled = true

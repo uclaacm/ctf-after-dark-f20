@@ -1,0 +1,11 @@
+slug = "ro-blocked"
+title = "Ro-Blocked"
+auther = "Matt"
+value = 45
+description = """Man the server sure has been running slow recently. I wonder if it has anything to do with the Roblox 2019 (Working) (Free) (Clean).exe that I installed?
+
+[capture.pcap](capture.pcap)"""
+tags = [ "packet" ]
+files = [ "capture.pcap" ]
+flag = "flag{dns_exf1ltrat10n_1s_fun}"
+enabled = true

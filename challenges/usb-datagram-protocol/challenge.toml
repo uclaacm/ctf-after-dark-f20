@@ -1,0 +1,9 @@
+slug = "usb-datagram-protocol"
+title = "Usb Datagram Protocol"
+auther = "Matt"
+value = 25
+description = """We've captured some [traffic](activity.pcap) on one of our machines, but it doesn't look like any network protocol I've ever seen. Can you take a look?"""
+tags = [ "packet" ]
+files = [ "activity.pcap" ]
+flag = "flag{USB_c0mes_in_p4ckets_2}"
+enabled = true

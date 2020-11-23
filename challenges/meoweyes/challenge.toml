@@ -1,0 +1,9 @@
+slug = "meoweyes"
+title = "Meoweyes"
+author = "defund"
+value = 40
+description = "And I didn't even get a chance to look at the cat! It's the same password though. (Note: this challenge uses the memory dump from Pumpkin)"
+tags = [ "memory" ]
+files = []
+flag = "flag{hidden_in_the_structs}"
+enabled = true

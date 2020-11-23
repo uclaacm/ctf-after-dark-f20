@@ -1,0 +1,9 @@
+slug = "snake"
+title = "Snake"
+author = "defund"
+value = 60
+description = "Remember, don't run any [file](https://mega.nz/file/2ME01J5K#j8IF7U_ST7DQnBXY-Z-YFE9ifCgTa9EjVgiCO0SLzrY) you download..."
+tags = [ "memory" ]
+files = []
+flag = "flag{cant_touch_this}"
+enabled = true

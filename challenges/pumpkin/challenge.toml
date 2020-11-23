@@ -1,0 +1,9 @@
+slug = "pumpkin"
+title = "Pumpkin"
+author = "defund"
+value = 30
+description = "I was looking at a really cute pumpkin before my [computer](https://mega.nz/file/fZMCBDLJ#vkz9AMhOYHfOHN5e-pO01JxIZZKtJS_W1ST2Nb2W0ls) died!"
+tags = [ "memory" ]
+files = []
+flag = "flag{pumpkin_carving}"
+enabled = true

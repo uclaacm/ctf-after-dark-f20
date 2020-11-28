@@ -24,6 +24,7 @@ fs.readdir(challengesPath, (err, folder) => {
   if (err) {
     console.log('ERROR: Could not open challenges/')
     core.setOutput('status', false);
+    core.setFailed('Check output for errors')
     return
   }
   folder.forEach(folder => {
@@ -39,7 +40,7 @@ fs.readdir(challengesPath, (err, folder) => {
         // validate fields are present
         if (!(key in data)) {
           status = false;
-          console.log(`ERROR: In ${folder} toml file: ${key} field is missing`)
+          console.log(`ERROR: In ${folder}: ${key} field is missing`)
         }
 
         // validate type
@@ -47,13 +48,13 @@ fs.readdir(challengesPath, (err, folder) => {
           case "array":
             if (!Array.isArray(data[key])) {
               status = false;
-              console.log(`ERROR: In ${folder} toml file: ${key} field is of the wrong type. It should be type array`)
+              console.log(`ERROR: In ${folder}: ${key} field is of the wrong type. It should be type array`)
             }
             break;
           default:
             if (typeof data[key] !== schema[key]) {
               status = false;
-              console.log(`ERROR: In ${folder} toml file: ${key} field is of the wrong type. It should be type ${schema[key]}`)
+              console.log(`ERROR: In ${folder}: ${key} field is of the wrong type. It should be type ${schema[key]}`)
             }
         }
 
@@ -61,9 +62,9 @@ fs.readdir(challengesPath, (err, folder) => {
         if (key === 'files' && Array.isArray(data[key])) {
           data[key].forEach(file => {
             if ('description' in data && typeof data['description'] === "string") {
-              if (data['description'].search(new RegExp(`\[.+\]\(${file}\)`, 'gi')) === -1) {
+              if (data['description'].search(new RegExp(`\[.+\]\(${file}\)`)) === -1) {
                 status = false;
-                console.log(`ERROR: In ${folder} toml file: Description is missing link to ${file}`)
+                console.log(`ERROR: In ${folder}: Description is missing link to ${file}`)
               }
 
               const matches = data['description'].match(/\[.+\]\(([-a-zA-Z0-9()_.].+)\)/i);
@@ -72,7 +73,7 @@ fs.readdir(challengesPath, (err, folder) => {
                 if (i % 2 === 1) {
                   if (!data['files'].includes(val)) {
                     status = false;
-                    console.log(`ERROR: In ${folder} toml file: ${val} is missing in files`)
+                    console.log(`ERROR: In ${folder}: ${val} is missing in files`)
                   }
                 }
               })

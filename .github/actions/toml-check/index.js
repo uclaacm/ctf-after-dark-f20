@@ -18,13 +18,16 @@ try {
 
 const challengesPath = withGithubWorkspacePath('challenges/');
 
-fs.readdir(challengesPath, (err, folder) => {
+fs.readdir(challengesPath, (err, folders) => {
   if (err) {
     console.log('ERROR: Could not open challenges/')
     core.setFailed('Check output for errors')
     return
   }
-  folder.forEach(folder => {
+
+  let status = true;
+  
+  folders.forEach(folder => {
     console.log('______________________________________________________')
     console.log('CHALLENGE: ' + folder)
 
@@ -36,7 +39,7 @@ fs.readdir(challengesPath, (err, folder) => {
       Object.keys(schema).forEach(key => {
         // validate fields are present
         if (!(key in data)) {
-          core.setFailed('Check output for errors')
+          status = false;
           console.log(`ERROR: In ${folder}: ${key} field is missing`)
         }
 
@@ -44,13 +47,13 @@ fs.readdir(challengesPath, (err, folder) => {
         switch (schema[key]) {
           case "array":
             if (!Array.isArray(data[key])) {
-              core.setFailed('Check output for errors')
+              status = false;
               console.log(`ERROR: In ${folder}: ${key} field is of the wrong type. It should be type array`)
             }
             break;
           default:
             if (typeof data[key] !== schema[key]) {
-              core.setFailed('Check output for errors')
+              status = false;
               console.log(`ERROR: In ${folder}: ${key} field is of the wrong type. It should be type ${schema[key]}`)
             }
         }
@@ -60,7 +63,7 @@ fs.readdir(challengesPath, (err, folder) => {
           data[key].forEach(file => {
             if ('description' in data && typeof data['description'] === "string") {
               if (data['description'].search(new RegExp(`\\[.+\\]\\(${file}\\)`)) === -1) {
-                core.setFailed('Check output for errors')
+                status = false;
                 console.log(`ERROR: In ${folder}: Description is missing link to ${file}`)
               }
 
@@ -69,7 +72,7 @@ fs.readdir(challengesPath, (err, folder) => {
               matches.forEach((val, i) => {
                 if (i % 2 === 1) {
                   if (!data['files'].includes(val)) {
-                    core.setFailed('Check output for errors')
+                    status = false;
                     console.log(`ERROR: In ${folder}: ${val} is missing in files`)
                   }
                 }
@@ -80,9 +83,13 @@ fs.readdir(challengesPath, (err, folder) => {
       })
     } catch (e) {
       console.log(`ERROR: In ${folder} toml file on line ${e.line}, column ${e.column}: ${e.message}`);
-      core.setFailed('Check output for errors')
-    }        
+      status = false;
+    }
   });
+
+  if (!status) {
+    core.setFailed('Check output for errors')
+  }
 })
 
 try {

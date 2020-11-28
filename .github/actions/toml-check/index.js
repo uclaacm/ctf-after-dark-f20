@@ -7,7 +7,7 @@ const { exit } = require('process');
 const loadTomlFile = filePath => toml.parse(fs.readFileSync(filePath, 'utf8'));
 const withGithubWorkspacePath = path => `${process.env.GITHUB_WORKSPACE}/${path}`
 
-var status = true;
+let status = true;
 var schema; 
 try {
   schema = loadTomlFile(withGithubWorkspacePath(core.getInput('path-to-schema')));
@@ -20,7 +20,7 @@ try {
 
 const challengesPath = withGithubWorkspacePath('challenges/');
 
-fs.readdirSync(challengesPath, (err, folder) => {
+fs.readdir(challengesPath, (err, folder) => {
   if (err) {
     console.log('ERROR: Could not open challenges/')
     core.setOutput('status', false);

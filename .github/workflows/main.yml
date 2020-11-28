@@ -10,10 +10,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: TOML Checker
-        uses: ./ # Uses an action in the root directory
+        uses: ./.github/actions/toml-check
         id: check
         with:
           path-to-schema: ./schema.toml
-      # Use the output from the `hello` step
       - name: Get output status
         run: echo "ALL FILES PASS? ${{ steps.check.outputs.status }}"

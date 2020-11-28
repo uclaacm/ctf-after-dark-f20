@@ -8,7 +8,7 @@ const loadTomlFile = filePath => toml.parse(fs.readFileSync(filePath, 'utf8'));
 const withGithubWorkspacePath = path => `${process.env.GITHUB_WORKSPACE}/${path}`
 
 var status = true;
-const schema; 
+var schema; 
 try {
   schema = loadTomlFile(withGithubWorkspacePath(core.getInput('path-to-schema')));
 } catch (e) {

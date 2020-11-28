@@ -41,21 +41,21 @@ fs.readdir(challengesPath, (err, folders) => {
         if (!(key in data)) {
           status = false;
           console.log(`ERROR: In ${folder}: ${key} field is missing`)
-        }
-
-        // validate type
-        switch (schema[key]) {
-          case "array":
-            if (!Array.isArray(data[key])) {
-              status = false;
-              console.log(`ERROR: In ${folder}: ${key} field is of the wrong type. It should be type array`)
-            }
-            break;
-          default:
-            if (typeof data[key] !== schema[key]) {
-              status = false;
-              console.log(`ERROR: In ${folder}: ${key} field is of the wrong type. It should be type ${schema[key]}`)
-            }
+        } else {
+          // validate type
+          switch (schema[key]) {
+            case "array":
+              if (!Array.isArray(data[key])) {
+                status = false;
+                console.log(`ERROR: In ${folder}: ${key} field is of the wrong type. It should be type array`)
+              }
+              break;
+            default:
+              if (typeof data[key] !== schema[key]) {
+                status = false;
+                console.log(`ERROR: In ${folder}: ${key} field is of the wrong type. It should be type ${schema[key]}`)
+              }
+          }
         }
 
         // special validation

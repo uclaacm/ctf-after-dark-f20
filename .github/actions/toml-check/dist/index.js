@@ -14,15 +14,13 @@ const { exit } = __webpack_require__(765);
 const loadTomlFile = filePath => toml.parse(fs.readFileSync(filePath, 'utf8'));
 const withGithubWorkspacePath = path => `${process.env.GITHUB_WORKSPACE}/${path}`
 
-let status = true;
 var schema; 
 try {
   schema = loadTomlFile(withGithubWorkspacePath(core.getInput('path-to-schema')));
 } catch (e) {
   console.log('ERROR: Schema could not be loaded')
-  core.setOutput('status', false);
   core.setFailed('Check output for errors')
-  exit(2)
+  exit(1)
 }
 
 const challengesPath = withGithubWorkspacePath('challenges/');
@@ -30,7 +28,6 @@ const challengesPath = withGithubWorkspacePath('challenges/');
 fs.readdir(challengesPath, (err, folder) => {
   if (err) {
     console.log('ERROR: Could not open challenges/')
-    core.setOutput('status', false);
     core.setFailed('Check output for errors')
     return
   }
@@ -46,7 +43,7 @@ fs.readdir(challengesPath, (err, folder) => {
       Object.keys(schema).forEach(key => {
         // validate fields are present
         if (!(key in data)) {
-          status = false;
+          core.setFailed('Check output for errors')
           console.log(`ERROR: In ${folder}: ${key} field is missing`)
         }
 
@@ -54,13 +51,13 @@ fs.readdir(challengesPath, (err, folder) => {
         switch (schema[key]) {
           case "array":
             if (!Array.isArray(data[key])) {
-              status = false;
+              core.setFailed('Check output for errors')
               console.log(`ERROR: In ${folder}: ${key} field is of the wrong type. It should be type array`)
             }
             break;
           default:
             if (typeof data[key] !== schema[key]) {
-              status = false;
+              core.setFailed('Check output for errors')
               console.log(`ERROR: In ${folder}: ${key} field is of the wrong type. It should be type ${schema[key]}`)
             }
         }
@@ -70,16 +67,16 @@ fs.readdir(challengesPath, (err, folder) => {
           data[key].forEach(file => {
             if ('description' in data && typeof data['description'] === "string") {
               if (data['description'].search(new RegExp(`\\[.+\\]\\(${file}\\)`)) === -1) {
-                status = false;
+                core.setFailed('Check output for errors')
                 console.log(`ERROR: In ${folder}: Description is missing link to ${file}`)
               }
 
-              const matches = data['description'].match(/\[.+\]\(([-a-zA-Z0-9()_.].+)\)/i);
+              const matches = data['description'].match(/\[.+\]\(([-a-zA-Z0-9()_.]+)\)/);
               
               matches.forEach((val, i) => {
                 if (i % 2 === 1) {
                   if (!data['files'].includes(val)) {
-                    status = false;
+                    core.setFailed('Check output for errors')
                     console.log(`ERROR: In ${folder}: ${val} is missing in files`)
                   }
                 }
@@ -90,15 +87,10 @@ fs.readdir(challengesPath, (err, folder) => {
       })
     } catch (e) {
       console.log(`ERROR: In ${folder} toml file on line ${e.line}, column ${e.column}: ${e.message}`);
-      status = false;
+      core.setFailed('Check output for errors')
     }        
   });
 })
-
-core.setOutput("status", status);
-if (!status) {
-  core.setFailed('Check output for errors')
-}
 
 try {
   // Get the JSON webhook payload for the event that triggered the workflow

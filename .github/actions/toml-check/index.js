@@ -20,7 +20,7 @@ try {
 
 const challengesPath = withGithubWorkspacePath('challenges/');
 
-fs.readdir(challengesPath, (err, folder) => {
+fs.readdirSync(challengesPath, (err, folder) => {
   if (err) {
     console.log('ERROR: Could not open challenges/')
     core.setOutput('status', false);

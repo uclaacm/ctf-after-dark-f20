@@ -62,7 +62,7 @@ fs.readdirSync(challengesPath, (err, folder) => {
         if (key === 'files' && Array.isArray(data[key])) {
           data[key].forEach(file => {
             if ('description' in data && typeof data['description'] === "string") {
-              if (data['description'].search(new RegExp(`\[.+\]\(${file}\)`)) === -1) {
+              if (data['description'].search(new RegExp(`\\[.+\\]\\(${file}\\)`)) === -1) {
                 status = false;
                 console.log(`ERROR: In ${folder}: Description is missing link to ${file}`)
               }

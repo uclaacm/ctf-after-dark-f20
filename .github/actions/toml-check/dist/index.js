@@ -27,7 +27,7 @@ try {
 
 const challengesPath = withGithubWorkspacePath('challenges/');
 
-fs.readdir(challengesPath, (err, folder) => {
+fs.readdirSync(challengesPath, (err, folder) => {
   if (err) {
     console.log('ERROR: Could not open challenges/')
     core.setOutput('status', false);
@@ -69,7 +69,7 @@ fs.readdir(challengesPath, (err, folder) => {
         if (key === 'files' && Array.isArray(data[key])) {
           data[key].forEach(file => {
             if ('description' in data && typeof data['description'] === "string") {
-              if (data['description'].search(new RegExp(`\[.+\]\(${file}\)`)) === -1) {
+              if (data['description'].search(new RegExp(`\\[.+\\]\\(${file}\\)`)) === -1) {
                 status = false;
                 console.log(`ERROR: In ${folder}: Description is missing link to ${file}`)
               }

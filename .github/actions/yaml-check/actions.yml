@@ -1,0 +1,13 @@
+name: 'TOML Check'
+description: 'Checks if you followed the toml format or if you made typos.'
+inputs:
+  path-to-schema:
+    description: 'TOML Schema'
+    required: true
+    default: 'schema.toml'
+outputs:
+  status:
+    description: 'If all files are valid'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

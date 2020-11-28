@@ -1,0 +1,19 @@
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: A job to check TOML files
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: TOML Checker
+        uses: ./ # Uses an action in the root directory
+        id: check
+        with:
+          path-to-schema: ./schema.toml
+      # Use the output from the `hello` step
+      - name: Get output status
+        run: echo "ALL FILES PASS? ${{ steps.check.outputs.status }}"

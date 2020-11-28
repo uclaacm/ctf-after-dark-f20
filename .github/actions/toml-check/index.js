@@ -8,12 +8,13 @@ const loadTomlFile = filePath => toml.parse(fs.readFileSync(filePath, 'utf8'));
 const withGithubWorkspacePath = path => `${process.env.GITHUB_WORKSPACE}/${path}`
 
 var status = true;
-
+const schema; 
 try {
-  const schema = loadTomlFile(withGithubWorkspacePath(core.getInput('path-to-schema')));
+  schema = loadTomlFile(withGithubWorkspacePath(core.getInput('path-to-schema')));
 } catch (e) {
   console.log('ERROR: Schema could not be loaded')
   core.setOutput('status', false);
+  core.setFailed('Check output for errors')
   exit(2)
 }
 
@@ -87,6 +88,9 @@ fs.readdir(challengesPath, (err, folder) => {
 })
 
 core.setOutput("status", status);
+if (!status) {
+  core.setFailed('Check output for errors')
+}
 
 try {
   // Get the JSON webhook payload for the event that triggered the workflow
